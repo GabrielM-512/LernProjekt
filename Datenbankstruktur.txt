@@ -17,3 +17,5 @@ Benutzer:
 	-Username
 	-Passwort (hashed)
 	-UserID (uint 64 dargestellt als 11-Zeichen base 64: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890$&)
+	-Motivation
+	-Leveling
