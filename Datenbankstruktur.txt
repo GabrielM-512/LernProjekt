@@ -1,22 +1,44 @@
-Mathe:
+Mathe(Beispiel):
 
 	-Themen:
-		Begriff
-		Erklärung
-		Beispiel
-		Stufe
-		Beweis
+		-ID
+		-Begriff
+		-Erklärung
+		-Beispiel
+		-Stufe
+		-Beweis
 	 
 
 	Übungsaufgaben:
+		-ID
 		-Aufgabe
 		-Lösung
 		-Erklärung
+		-Pushtest
 	
 Benutzer:
 	-Username
 	-Passwort (hashed)
 	-UserID (uint 64 dargestellt als 11-Zeichen base 64: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890$&)
-	-Motivation
-	-Leveling
-        -Auth level (admin, user, mod, etc)
+	-Mail (hashed)
+    -Auth level (admin, user, mod, etc)
+	
+	
+	Level:
+	-User-ID
+	-Fach-ID
+	-Level
+
+	User-progress:
+	-User-ID
+	-Fach-ID
+	-Thema-ID
+	-lecture
+
+	errors:
+	-UserID
+	-Fach-ID
+	-Thema-ID
+	-lectureID
+	-errorID
+	-count
