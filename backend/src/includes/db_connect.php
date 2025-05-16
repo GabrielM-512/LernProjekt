@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost"
-$username = "root"
-$password = ""
-$dbname = "lernprojekt"
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "lernprojekt";
 
 
 ?>
