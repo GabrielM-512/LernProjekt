@@ -1,11 +1,18 @@
 <?php
 //Not accessible for users, only for programming. Deactivate before going online.
+require 'backend/src/includes/db_connect.php';
 
-$sql = "CREATE DATABASE IF NOT EXISTS LernProjekt;
-USE LernProjekt;
+$sql = "DROP DATABASE IF EXISTS LernProjekt;";
+
+if ($conn->query($sql) !== TRUE) {
+	echo "error: " . conn->error;
+} else {
+
+    $sql = "CREATE DATABASE IF NOT EXISTS LernProjekt;
+    USE LernProjekt;
 
 	CREATE TABLE IF NOT EXISTS Faecher (
-		Fach_ID INT(100) AUTO_INCREMENT NOT NULL,
+	    Fach_ID INT(100) AUTO_INCREMENT NOT NULL,
 		Fach_Name VARCHAR(100) NOT NULL,
         PRIMARY KEY (Fach_ID)
 	);
@@ -73,5 +80,14 @@ USE LernProjekt;
         FOREIGN KEY (Fach_ID) REFERENCES Faecher(Fach_ID),
         FOREIGN KEY (Thema_ID) REFERENCES Themen1(Thema_ID)
 	);"
+
+    if ($conn->query($sql) !== TRUE) {
+	    echo "error: " . conn->error;
+    } else {
+		echo "db init successful";
+	}
+}
+
+$conn->close();
 
 ?>
