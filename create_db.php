@@ -102,10 +102,12 @@ $sql_list[]	= "CREATE TABLE IF NOT EXISTS User_Errors (
 foreach ($sql_list as $query) {
 	if ($conn->query($query) !== TRUE) {
 		echo "error: " . conn->error;
-	} else {
-		echo "db init successful<br>";
+		$conn->close()
+		return;
 	}
 }
+
+echo "db init successful";
 
 $conn->close();
 
