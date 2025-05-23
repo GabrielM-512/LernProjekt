@@ -11,38 +11,41 @@ if ($conn->query($sql) !== TRUE) {
     $sql = "CREATE DATABASE IF NOT EXISTS LernProjekt;
     USE LernProjekt;
 
-	CREATE TABLE IF NOT EXISTS Faecher (
-	    Fach_ID INT(100) AUTO_INCREMENT NOT NULL,
-		Fach_Name VARCHAR(100) NOT NULL,
-        PRIMARY KEY (Fach_ID)
+	CREATE DATABASE IF NOT EXISTS LernProjekt;
+    USE LernProjekt;
+
+	CREATE TABLE IF NOT EXISTS Subjects (
+	    Subject_ID INT(100) AUTO_INCREMENT NOT NULL,
+		Subject_Name VARCHAR(100) NOT NULL,
+        PRIMARY KEY (Subject_ID)
 	);
 
-	CREATE TABLE IF NOT EXISTS Themen (
-        Fach_ID INT NOT NULL,
-        Thema_ID INT NOT NULL,
-		Thema_Name VARCHAR(100) NOT NULL,
-       	Stufe INT(20),
-      	Beispiel VARCHAR,
+	CREATE TABLE IF NOT EXISTS Topics (
+        Subject_ID INT NOT NULL,
+		Topic_ID INT NOT NULL,
+		Topic_Name VARCHAR(100) NOT NULL,
+       	Grade INT(20),
+      	Example VARCHAR,
        	Begriff VARCHAR,
 		Beweis VARCHAR,
-        FOREIGN KEY (Fach_ID) REFERENCES Faecher(Fach_ID)
+        FOREIGN KEY (Subject_ID) REFERENCES Subjects(Subject_ID)
    	 );
      
      CREATE TABLE IF NOT EXISTS Lectures (
      	 Lecture_ID INT NOT NULL,
-         Thema_ID INT NOT NULL,
-         FOREIGN KEY (Thema_ID) REFERENCES Themen(Thema_ID)
+         Topic_ID INT NOT NULL,
+         FOREIGN KEY (Topic_ID) REFERENCES Topics(Topic_ID)
      );
     
-    	CREATE TABLE IF NOT EXISTS Uebungen ( 
-			Thema_ID INT NOT NULL,
-			Uebung_ID INT NOT NULL AUTO_INCREMENT,
-			Aufgabe VARCHAR,
-			Lösung VARCHAR,
-			Erklärung VARCHAR,
+    	CREATE TABLE IF NOT EXISTS Tasks ( 
+			Topic_ID INT NOT NULL,
+			Task_ID INT NOT NULL AUTO_INCREMENT,
+			Task_content VARCHAR,
+			Solution VARCHAR,
+			Task_Explaination VARCHAR,
 			Pushtest VARCHAR,
-            PRIMARY KEY (Uebung_ID),
- 			FOREIGN KEY (Thema_ID) REFERENCES Themen1(Thema_ID)
+            PRIMARY KEY (Task_ID),
+ 			FOREIGN KEY (Topic_ID) REFERENCES Topics(Topic_ID)
 		);
         
     	CREATE TABLE IF NOT EXISTS Users (
@@ -54,31 +57,31 @@ if ($conn->query($sql) !== TRUE) {
     
 	CREATE TABLE IF NOT EXISTS Level (
 		User_ID INT,
-		Fach_ID INT,
+		Subject_ID INT,
 		Level INT,
         FOREIGN KEY (User_ID) REFERENCES Nutzer(User_ID),
-        FOREIGN KEY (Fach_ID) REFERENCES Faecher(Fach_ID)
+        FOREIGN KEY (Subject_ID) REFERENCES Subjects(Subject_ID)
 	);
 
 	CREATE TABLE IF NOT EXISTS Nutzer_progress (
         User_ID INT,
-		Fach_ID INT,
-		Thema_ID INT,
+		Subject_ID INT,
+		Topic_ID INT,
 		lecture VARCHAR,
         FOREIGN KEY (User_ID) REFERENCES Nutzer(User_ID),
-        FOREIGN KEY (Thema_ID) REFERENCES Themen1(Thema_ID)
+        FOREIGN KEY (Topic_ID) REFERENCES Topics(Topic_ID)
 	);
 
 	CREATE TABLE IF NOT EXISTS User_Errors (
         User_ID INT,
-		Fach_ID INT(100),
-    	Thema_ID INT(100),
+		Subject_ID INT(100),
+    	Topic_ID INT(100),
 		lecture VARCHAR,
 		Error_ID INT(100),
 		Error_count INT,
         FOREIGN KEY (User_ID) REFERENCES Nutzer(User_ID),
-        FOREIGN KEY (Fach_ID) REFERENCES Faecher(Fach_ID),
-        FOREIGN KEY (Thema_ID) REFERENCES Themen1(Thema_ID)
+        FOREIGN KEY (Subject_ID) REFERENCES Subjects(Subject_ID),
+        FOREIGN KEY (Topic_ID) REFERENCES Topics(Topic_ID)
 	);"
 
     if ($conn->query($sql) !== TRUE) {
