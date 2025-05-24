@@ -29,21 +29,22 @@ if ($conn->query($sql) !== TRUE) {
 $sql_list = [];
 
 $sql_list[] = "CREATE TABLE IF NOT EXISTS Subjects (
-			Subject_ID INT AUTO_INCREMENT NOT NULL,
-			Subject_Name VARCHAR(100) NOT NULL,
-			PRIMARY KEY (Subject_ID)
-		);";
+				Subject_ID INT AUTO_INCREMENT NOT NULL,
+				Subject_Name VARCHAR(100) NOT NULL,
+				PRIMARY KEY (Subject_ID)
+			);";
+			
 
 $sql_list[]	= "CREATE TABLE IF NOT EXISTS Topics (
-			Subject_ID INT NOT NULL,
-			Topic_ID INT NOT NULL,
-			Topic_Name VARCHAR(100) NOT NULL,
-			Grade INT(20),
-			Example VARCHAR(100),
-			Begriff VARCHAR(100),
-			FOREIGN KEY (Subject_ID) REFERENCES Subjects(Subject_ID),
-			PRIMARY KEY (Topic_ID)
-		);";
+				Subject_ID INT NOT NULL,
+				Topic_ID INT NOT NULL,
+				Topic_Name VARCHAR(100) NOT NULL,
+				Grade INT(20),
+				Example VARCHAR(100),
+				Begriff VARCHAR(100),
+				FOREIGN KEY (Subject_ID) REFERENCES Subjects(Subject_ID),
+				PRIMARY KEY (Topic_ID)
+			);";
 			
 $sql_list[]	= "CREATE TABLE IF NOT EXISTS Lectures (
 				Lecture_ID INT NOT NULL,
@@ -62,7 +63,7 @@ $sql_list[]	= "CREATE TABLE IF NOT EXISTS Tasks (
 				FOREIGN KEY (Topic_ID) REFERENCES Topics(Topic_ID)
 			);";
 
-$sql_list[]	= "	CREATE TABLE IF NOT EXISTS Users (
+$sql_list[]	= "CREATE TABLE IF NOT EXISTS Users (
 				User_ID INT NOT NULL,
 				Username VARCHAR(20) NOT NULL,
 				Password_hashed VARCHAR(256) NOT NULL,
