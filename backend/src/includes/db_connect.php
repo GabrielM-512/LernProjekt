@@ -10,10 +10,14 @@ if ($conn->connect_error) {
 	die("Connection error: " . $conn->connect_error);
 }
 
-/*$sql = "USE $dbname;";
+if (isset($setDB)) {
+	if ($setDB) {
+		$sql = "USE $dbname;";
 
-if ($conn->query($sql) !== TRUE) {
-	echo "error: " . conn->error;
+		if ($conn->query($sql) !== TRUE) {
+			echo "error: " . conn->error;
+		}
+	}
 }
+
 ?>
-*/
