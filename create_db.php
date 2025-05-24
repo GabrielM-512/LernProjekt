@@ -1,6 +1,7 @@
 <?php
 //Not accessible for users, only for programming. Deactivate before going online.
 //As the name suggests, this sets up the DB for usage with the rest of the scripts.
+$setDB = False;
 require 'backend/src/includes/db_connect.php';
 
 $sql = "DROP DATABASE IF EXISTS LernProjekt;";
@@ -103,7 +104,7 @@ $sql_list[]	= "CREATE TABLE IF NOT EXISTS User_Errors (
 foreach ($sql_list as $query) {
 	if ($conn->query($query) !== TRUE) {
 		echo "error: " . conn->error;
-		$conn->close()
+		$conn->close();
 		return;
 	}
 }
