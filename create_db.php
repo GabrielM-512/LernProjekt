@@ -1,5 +1,6 @@
 <?php
 //Not accessible for users, only for programming. Deactivate before going online.
+//As the name suggests, this sets up the DB for usage with the rest of the scripts.
 require 'backend/src/includes/db_connect.php';
 
 $sql = "DROP DATABASE IF EXISTS LernProjekt;";
@@ -33,7 +34,6 @@ $sql_list[] = "CREATE TABLE IF NOT EXISTS Subjects (
 				Subject_Name VARCHAR(100) NOT NULL,
 				PRIMARY KEY (Subject_ID)
 			);";
-			
 
 $sql_list[]	= "CREATE TABLE IF NOT EXISTS Topics (
 				Subject_ID INT NOT NULL,
