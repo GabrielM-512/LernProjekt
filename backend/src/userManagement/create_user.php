@@ -9,9 +9,9 @@ if (isset($_POST['mail']) && isset($_POST['username']) && isset($_POST['password
     $username = $_POST['username'];
     $password_received = $_POST['password_hashed'];
 } else {
-    /*echo "incomplete data";
+    echo "incomplete data";
     $conn->close();
-    return;*/
+    return;
 }
 
 //ensure email is valid
