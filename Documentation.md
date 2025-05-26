@@ -45,7 +45,7 @@ Programmers should:
 * Include a block comment at the beginning of each file that describes its purpose
 * Never use the same file for more than one functionality (at least for .php files)
 * Include comments for blocks of code which describe what that block does
-* Arguably most important: name files in a way that **clearly describes their purpose**
+* Arguably most important: name files and variables in a way that **clearly describes their purpose**
 
 <br><br>
 Files which the user accesses should be of type _.php_. JavaScript code should, when possible, be saved in a seperate _.js_ file and then linked into the .php file which the user accesses.
