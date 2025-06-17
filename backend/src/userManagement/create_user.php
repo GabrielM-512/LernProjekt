@@ -9,14 +9,14 @@ if (isset($_POST['mail']) && isset($_POST['username']) && isset($_POST['password
     $username = $_POST['username'];
     $password_received = $_POST['password_hashed'];
 } else {
-    echo "incomplete data";
+    echo "400: incomplete data";
     $conn->close();
     return;
 }
 
 //ensure email is valid
 if (!is_valid_email($email)) {
-    echo "invalid email address";
+    echo "401: invalid email address";
     $conn->close();
     return;
 }
@@ -26,7 +26,7 @@ $sql = "SELECT * FROM Users WHERE Email = '$email'";
 $result = $conn->query($sql);
 
 if (count($result) > 0) {
-    echo "email address already in use";
+    echo "300: email address already in use";
     $conn->close();
     return;
 }
@@ -39,8 +39,9 @@ $sql = "INSERT INTO Users (Username, Password_hashed, Email) Values ($username, 
 
 if ($conn->query($sql) !== TRUE) {
 	echo "error: " . $conn->error;
-}
-
+} else {
+    echo "200: User creation was successful";
+} 
 
 $conn->close();
 
