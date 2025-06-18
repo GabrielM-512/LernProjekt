@@ -3,7 +3,6 @@ include "prepend.php";
 
 require_once BACKEND_INCLUDES . "\db_connect.php";
 
-$email = "a";
 if (isset($_POST['mail']) && isset($_POST['username']) && isset($_POST['password_hashed'])) {
     $email = $_POST['mail'];
     $username = $_POST['username'];
