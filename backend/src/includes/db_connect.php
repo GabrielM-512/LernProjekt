@@ -1,7 +1,7 @@
 <?php
 /*
 This file serves as the global include for connecting to the server. It should only ever be used as include_once or require_once.
-It provides the option to not instantly connect to the database itself and instead just connect to the server by creating the variable $setDB and setting it to True prior to including this file.
+It provides the option to not instantly connect to the database itself and instead just connect to the server by creating the variable $setDB and setting it to False prior to including this file.
 */
 
 // configure server and DB data
