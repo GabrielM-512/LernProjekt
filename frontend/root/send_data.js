@@ -1,4 +1,4 @@
-function send_data(username, password, email) {
+export function send_data(username, password, email) {
     filepath = "../../../src/userManagement/create_user.php";
     xhttp = new XMLHttpRequest();
 

@@ -10,6 +10,7 @@
 <body>
     <div class="container">
         <?php
+        /*
         if (isset($_POST["submit"])){
 
         $passwordHash = password_hash($password,  PASSWORD_DEFAULT);
@@ -37,9 +38,9 @@
        }
 
     }
-
+*/
         ?>
-        <form action="registeration.php" method="post">
+        <form action="registeration.php" method="post" id = "regist">
             <div class="form-group">
                 <input type="text" class ="Form-control" name="name" placeholder="Username:">
             </div>
@@ -57,7 +58,25 @@
             </div>
         </form>
 
-    </div>
+        <script type="module">
+        import {send_data} from "/send_data.js";
+    document.getElementById("regist").addEventListener("submit", function(event) {
+    event.preventDefault(); // prevent default form submission
+    event.stopImmediatePropagation();
+
+    const form = event.target;
+    const formData = new FormData(form);
+
+    console.log("logged");
+
+    // Convert to plain object (optional)
+    const data = Object.fromEntries(formData.entries());
+
+    console.log(data); // { username: "johndoe", email: "john@example.com" }
+  });
+</script>
+
+
     
 </body>
 </html>
